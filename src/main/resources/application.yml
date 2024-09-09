@@ -1,0 +1,38 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/assignment
+    username: postgres
+    password: johnsimon
+    driver-class-name: org.postgresql.Driver
+  servlet:
+    multipart:
+      max-file-size: 1024MB    # Maximum size for a single file
+      max-request-size: 1024MB # Maximum size for the entire multipart request
+
+
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: true
+
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+
+  batch:
+    jdbc:
+      schema: { initialize-schema: always }
+    job:
+      enabled: false
+server:
+  port: 9090
+#logging:
+  #level:
+    #org.springframework.batch: DEBUG
+    # org.springframework.batch.core: DEBUG
+#  #  org.springframework.batch.core.step.tasklet: DEBUG
+    #org.springframework.batch.core.partition.support: DEBUG
+  #  org.springframework.batch.core.step.item: DEBUG
+  # Ensure Tomcat can handle large request bodie
